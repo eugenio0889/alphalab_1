@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db.changelog/changeset/person.yml
+  - include:
+      file: classpath:db.changelog/changeset/document.yml
+

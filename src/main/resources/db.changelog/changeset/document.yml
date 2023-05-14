@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: strigo_eugenio
+      changes:
+        - createTable:
+            tableName: DOCUMENT
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: document_pk
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NUMBER
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: DOCUMENT_TYPE
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: SCANNED_DOC_URL
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CREATED
+                  type: DATE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: UPDATED
+                  type: DATE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IS_ACTIVE
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: PERSON_ID
+                  type: BIGINT
+
+  - changeSet:
+      id: 2
+      author: strigo_eugenio
+      changes:
+        - addUniqueConstraint:
+            columnNames: NUMBER
+            constraintName: document_number_uk
+            tableName: DOCUMENT
+        - addForeignKeyConstraint:
+            baseColumnNames: PERSON_ID
+            baseTableName: DOCUMENT
+            constraintName: person_id_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: ID
+            referencedTableName: PERSON
+            validate: true

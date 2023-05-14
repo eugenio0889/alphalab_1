@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: alphalab_task_1
+
+  profiles:
+    include:
+      - db
+      - liquibase
+
+server:
+  port: 8080
